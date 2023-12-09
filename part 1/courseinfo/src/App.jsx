@@ -3,18 +3,18 @@
 const Header = (props) => {
   console.log(props)
   return (
-    <h1>{props.course}</h1>
+    <h1>{props.course.name}</h1>
   )
 }
 
-//Add Content Component - Content can be passed as an array of courses and excersizes
-const Content = (props) => {
+//Add course Component - course can be passed as an array of courses and excersizes
+const Course = (props) => {
   console.log(props)
   return (
     <div>
-      <p>Name: {props.content[0].name}  Exercises: {props.content[0].exercises}</p>
-      <p>Name: {props.content[1].name}  Exercises: {props.content[1].exercises}</p>
-      <p>Name: {props.content[2].name}  Exercises: {props.content[2].exercises}</p>
+      <p>Name: {props.course.parts[0].name}  Exercises: {props.course.parts[0].exercises}</p>
+      <p>Name: {props.course.parts[1].name}  Exercises: {props.course.parts[1].exercises}</p>
+      <p>Name: {props.course.parts[2].name}  Exercises: {props.course.parts[2].exercises}</p>
     </div>
   )
 }
@@ -24,9 +24,9 @@ const Total = (props) => {
   console.log(props)
   return (
     <div>
-      <p>Total Number of exercises = {props.content[0].exercises
-                                        + props.content[1].exercises
-                                        + props.content[2].exercises}
+      <p>Total Number of exercises = {props.course.parts[0].exercises
+                                        + props.course.parts[1].exercises
+                                        + props.course.parts[2].exercises}
       </p>
     </div>
   )
@@ -54,8 +54,8 @@ const App = () => {
   return (
     <div>
       <Header course = {course} />
-      <Content content = {parts} />
-      <Total content = {parts} />
+      <Course course = {course} />
+      <Total course = {course} />
     </div>
   )
 }
