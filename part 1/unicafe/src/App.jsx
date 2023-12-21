@@ -5,9 +5,23 @@ const Title = (props) => {
   return <div>{props.text}</div>
 }
 
-const Stats = (props) => {
+const StatsTitle = (props) => {
   console.log(props)
   return <div>{props.text}</div>
+}
+
+const Stats = (props) => {
+  console.log(props)
+  return (
+    <div>
+      {props.text} {props.value}
+    </div>
+  )
+}
+
+const Button = (props) => {
+  console.log(props)
+  return <button>{props.text}</button>
 }
 
 const App = () => {
@@ -19,7 +33,13 @@ const App = () => {
   return (
     <div>
       <Title text="Give Feedback" />
-      <Stats text="Statistics" />
+      <Button text="Good" />
+      <Button text="Neutral" />
+      <Button text="Bad" />
+      <StatsTitle text="Statistics" />
+      <Stats text="Good" value={good} />
+      <Stats text="Neutral" value={neutral} />
+      <Stats text="Bad" value={bad} />
     </div>
   )
 }
