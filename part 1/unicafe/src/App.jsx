@@ -1,13 +1,12 @@
 import { useState } from "react"
 
-const Title = (props) => {
+const Header = (props) => {
   console.log(props)
-  return <div>{props.text}</div>
-}
-
-const StatsTitle = (props) => {
-  console.log(props)
-  return <div>{props.text}</div>
+  return (
+    <div>
+      <h1>{props.text}</h1>
+    </div>
+  )
 }
 
 const Stats = (props) => {
@@ -19,9 +18,9 @@ const Stats = (props) => {
   )
 }
 
-const Button = (props) => {
-  console.log(props)
-  return <button>{props.text}</button>
+const Button = ({ handleClick, text }) => {
+  console.log(text)
+  return <button onClick={handleClick}>{text}</button>
 }
 
 const App = () => {
@@ -30,13 +29,26 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
+  const handleGoodClick = () => {
+    //setAll(allClicks.concat('L'))
+    setGood(good + 1)
+  }
+  const handleNeutralClick = () => {
+    //setAll(allClicks.concat('L'))
+    setNeutral(neutral + 1)
+  }
+  const handleBadClick = () => {
+    //setAll(allClicks.concat('L'))
+    setBad(bad + 1)
+  }
+
   return (
     <div>
-      <Title text="Give Feedback" />
-      <Button text="Good" />
-      <Button text="Neutral" />
-      <Button text="Bad" />
-      <StatsTitle text="Statistics" />
+      <Header text="Give Feedback" />
+      <Button handleClick={handleGoodClick} text="Good" />
+      <Button handleClick={handleNeutralClick} text="Neutral" />
+      <Button handleClick={handleBadClick} text="Bad" />
+      <Header text="Statistics" />
       <Stats text="Good" value={good} />
       <Stats text="Neutral" value={neutral} />
       <Stats text="Bad" value={bad} />
